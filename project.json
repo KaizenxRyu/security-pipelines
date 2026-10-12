@@ -1,0 +1,1 @@
+{"name":"security-pipelines","version":"0.1.0","owner":"Rahul Chamoli","runtime":"Python >=3.12","runtime_dependencies":[],"first_pipeline":"agent-boundaries","publication":"pending","integration_status":{"microsoft_assert":"documented, not run","clarity":"not integrated","acs":"not integrated"}}

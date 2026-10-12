@@ -1,0 +1,3 @@
+# Contributor guidance
+
+Read README.md, project.json, docs/intent.md and docs/status.md first. Keep one writer per file, small focused modules, and current acceptance evidence. No credentials, private project data or generated raw model transcripts in Git. No provider calls without explicit spending and data-transmission authority. Test denial and legitimate success separately. Do not call a simulation an AI evaluation, or a missing baseline an approval. Keep external workflow templates disabled until reviewed and configured. Python/library code uses command, contract, policy and reporting modules rather than artificial HTTP folders. The owner for this initial work is Codex.
