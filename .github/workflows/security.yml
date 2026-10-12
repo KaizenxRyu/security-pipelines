@@ -1,0 +1,40 @@
+name: Agent boundary security pipeline
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  boundaries:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
+        with:
+          python-version: '3.12'
+      - name: Failure, recovery and boundary tests
+        run: python -m unittest discover -s tests -v
+      - name: Replay the frozen cases before and after enforcement
+        run: python -m security_pipelines demo
+      - name: Write the job summary
+        if: always()
+        run: |
+          if [ -f artifacts/agent-boundaries/report.md ]; then
+            cat artifacts/agent-boundaries/report.md >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo 'No replay report. Inspect failed steps; this is not a security pass.' >> "$GITHUB_STEP_SUMMARY"
+          fi
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        if: always()
+        with:
+          name: agent-boundary-report
+          path: artifacts/agent-boundaries/
+          if-no-files-found: error
+          retention-days: 7
