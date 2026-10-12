@@ -1,5 +1,7 @@
 # Security pipelines
 
+[![Agent boundary checks](https://github.com/KaizenxRyu/security-pipelines/actions/workflows/security.yml/badge.svg)](https://github.com/KaizenxRyu/security-pipelines/actions/workflows/security.yml)
+
 Repeatable security checks with evidence you can inspect. Built by **Rahul Chamoli / KaizenxRyu**. Start with agent tool boundaries, then add independently tested AI, cloud and software security pipelines.
 
 **Available now:** an offline authorization replay and an automatically generated ten-document assessment pack. **Not yet evaluated:** real language models, Microsoft ASSERT, ACS enforcement or production systems. This repository is independent of Microsoft.
